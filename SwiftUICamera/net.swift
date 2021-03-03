@@ -15,11 +15,18 @@ class dataModel:ObservableObject{
     @Published var img:UIImage? = nil
 }
 
-struct result_item:Codable {
-    let score:Double
-    let name:String
-}
+
 struct test_model:Codable{
+    struct baike_info_item:Codable{
+        let baike_url:String?
+        let image_url:String?
+        let description:String?
+    }
+    struct result_item:Codable {
+        let score:Double
+        let name:String
+        let baike_info:baike_info_item?
+    }
     let log_id:Int
     let result:[result_item]?
     let error_msg:String?
@@ -36,7 +43,7 @@ func base64ToBase64url(base64: String) -> String {
 }
 
 func toBase64 (img: UIImage) -> String {
-    var temp=img.jpegData(compressionQuality: 0.05)?.base64EncodedString() ?? ""
+    let temp=img.jpegData(compressionQuality: 0.05)?.base64EncodedString() ?? ""
     let temp2=base64ToBase64url(base64: temp)
     return temp2
 }
@@ -58,8 +65,8 @@ class api{
         //不能用这种方式!!!!! 用下面三行的办法!!!!!
         //let params:[String : Any]=["image":str2]
         //request.httpBody = try! JSONSerialization.data(withJSONObject: params)
-        
-        let post="image="+str2+"&top_num=4"
+        let post="image="+str2+"&top_num=4&baike_num=4"
+        //let post="image="+str2+"&baike_num=4&top_num=4"
         let post2=post.data(using: .utf8)
         request.httpBody=post2
         

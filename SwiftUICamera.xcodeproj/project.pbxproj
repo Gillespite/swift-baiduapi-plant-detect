@@ -16,6 +16,7 @@
 		8DD60FE723F251FE009F6EED /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD60FE623F251FE009F6EED /* ImagePicker.swift */; };
 		A12708ED25E55E020016B40F /* net.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12708EC25E55E020016B40F /* net.swift */; };
 		A12708F225E6414E0016B40F /* resultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12708F125E6414E0016B40F /* resultView.swift */; };
+		A1A1197125EE630E00724EDC /* net_Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A1197025EE630E00724EDC /* net_Image.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		8DD60FE623F251FE009F6EED /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		A12708EC25E55E020016B40F /* net.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = net.swift; sourceTree = "<group>"; };
 		A12708F125E6414E0016B40F /* resultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = resultView.swift; sourceTree = "<group>"; };
+		A1A1197025EE630E00724EDC /* net_Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = net_Image.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 				8DD60FE623F251FE009F6EED /* ImagePicker.swift */,
 				A12708EC25E55E020016B40F /* net.swift */,
 				A12708F125E6414E0016B40F /* resultView.swift */,
+				A1A1197025EE630E00724EDC /* net_Image.swift */,
 			);
 			path = SwiftUICamera;
 			sourceTree = "<group>";
@@ -159,6 +162,7 @@
 				8DD60FE723F251FE009F6EED /* ImagePicker.swift in Sources */,
 				8DD60FD523F24F6C009F6EED /* SceneDelegate.swift in Sources */,
 				A12708F225E6414E0016B40F /* resultView.swift in Sources */,
+				A1A1197125EE630E00724EDC /* net_Image.swift in Sources */,
 				8DD60FD723F24F6C009F6EED /* ContentView.swift in Sources */,
 				A12708ED25E55E020016B40F /* net.swift in Sources */,
 			);

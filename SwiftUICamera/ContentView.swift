@@ -8,6 +8,8 @@
 
 import SwiftUI
 
+
+@available(iOS 14.0, *)
 struct ContentView: View {
     
     @State private var showSheet: Bool = false
@@ -25,11 +27,14 @@ struct ContentView: View {
         NavigationView {
             VStack {
                 Spacer()
+                
                 Image(uiImage: model.img ?? UIImage(named: "placeholder")!)
                     .resizable()
-                    .aspectRatio(contentMode: .fit)
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: 330, height: 330)
+                    .clipped()
                     .cornerRadius(30)
-                    .frame(minWidth: 0, idealWidth: 250, maxWidth: 300, minHeight: 0, idealHeight: 300, maxHeight: 340)
+                
                 Spacer()
                 
                 Text(model.data?.error_msg ?? ( model.data?.result![0].name ?? "等待输入..."))
@@ -56,15 +61,19 @@ struct ContentView: View {
                     .padding(.horizontal, 20)
                 }
                 //.padding()
+                
+                
                 .actionSheet(isPresented: $showSheet) {
                     ActionSheet(title: Text("选择照片"), message: Text("Select Photo"), buttons: [
                         .default(Text("照片")) {
                             self.showImagePicker = true
                             self.sourceType = .photoLibrary
+                            model.data=nil
                         },
                         .default(Text("拍摄")) {
                             self.showImagePicker = true
                             self.sourceType = .camera
+                            model.data=nil
                         },
                         .cancel()
                     ])
@@ -113,6 +122,8 @@ struct ContentView: View {
 }
 
 
+
+@available(iOS 14.0, *)
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
