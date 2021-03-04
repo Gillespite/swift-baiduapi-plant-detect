@@ -22,7 +22,7 @@ struct NetworkImage: View {
                     .resizable()
                     .aspectRatio(contentMode: .fill)
             } else if viewModel.isLoading {
-                Image(systemName: "photo")
+                ProgressView()
             } else {
                 Image(systemName: "photo")
             }

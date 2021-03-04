@@ -46,13 +46,19 @@ struct resultView: View {
                         if let des=data.result?[i].baike_info?.description,let img=data.result?[i].baike_info?.image_url{
                             cell2(img_url: img, des: des,score: data.result![i].score, name: data.result![i].name)
                                 .onAppear{
-                                    str="识别结果"
+                                    if i==0{
+                                        str="识别结果"
+                                        model.text=data.result![i].name+"-"+String(format: "%.2f", data.result![i].score*100)+"%"
+                                    }
                                 }
                         }
                         else{
                             cell(score: data.result![i].score, name: data.result![i].name)
                                 .onAppear{
-                                    str="识别结果"
+                                    if i==0{
+                                        str="识别结果"
+                                        model.text=data.result![i].name+"-"+String(format: "%.2f", data.result![i].score*100)+"%"
+                                    }
                                 }
                         }
                     }

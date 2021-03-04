@@ -13,6 +13,7 @@ import SwiftUI
 class dataModel:ObservableObject{
     @Published var data:test_model? = nil
     @Published var img:UIImage? = nil
+    @Published var text:String? = nil
 }
 
 

@@ -16,30 +16,39 @@ struct ContentView: View {
     @State private var showImagePicker: Bool = false
     @State private var sourceType: UIImagePickerController.SourceType = .camera
     @State private var switch_test = false
-    //@State private var image: UIImage?
     
-    @State var str:String!="fuck"
     
     @EnvironmentObject var model:dataModel
     
+    
+    
     var body: some View {
-        
         NavigationView {
             VStack {
                 Spacer()
-                
                 Image(uiImage: model.img ?? UIImage(named: "placeholder")!)
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(width: 330, height: 330)
                     .clipped()
                     .cornerRadius(30)
-                
+                    .overlay(
+                        Text(model.data?.error_msg ?? ( model.text ?? "请选择图片"))
+                            .fontWeight(.heavy)
+                            .font(.system(.headline, design: .rounded))
+                            .foregroundColor(.black)
+                            .padding()
+                            .background(Color.white)
+                            .cornerRadius(30)
+                            .opacity(0.8)
+                            .padding()
+                        ,alignment: .bottomTrailing
+                    )
                 Spacer()
                 
-                Text(model.data?.error_msg ?? ( model.data?.result![0].name ?? "等待输入..."))
-                    .font(.system(size: 20))
-                Spacer()
+                //Text(model.data?.error_msg ?? ( model.data?.result![0].name ?? "等待输入..."))
+                    //.font(.system(size: 20))
+                //Spacer()
                 //Text(model.data?.result[0].name ?? "good")
                 
                 //Text(str)
@@ -69,11 +78,15 @@ struct ContentView: View {
                             self.showImagePicker = true
                             self.sourceType = .photoLibrary
                             model.data=nil
+                            model.text=nil
+                            //model.isChoose="照片已选择,开始识别吧!"
                         },
                         .default(Text("拍摄")) {
                             self.showImagePicker = true
                             self.sourceType = .camera
                             model.data=nil
+                            model.text=nil
+                            //model.isChoose="照片已选择,开始识别吧!"
                         },
                         .cancel()
                     ])
@@ -83,8 +96,8 @@ struct ContentView: View {
                     if let img=model.img{
                         let str2=toBase64(img: img)
                         //let str3="12345678"
-                        str = str2
-                        api().getPost(str2:str) { (data) in
+                        //str = str2
+                        api().getPost(str2:str2) { (data) in
                             self.model.data=data
                             //str=String(self.model.data!.result![0].score*100)
                         }
@@ -116,6 +129,7 @@ struct ContentView: View {
             .navigationBarTitle("植物识别")
             
         }.sheet(isPresented: $showImagePicker) {
+            //图片再此被传入model.img中
             ImagePicker(image: self.$model.img, isShown: self.$showImagePicker, sourceType: self.sourceType)
         }
     }
